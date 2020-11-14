@@ -13,10 +13,10 @@
     "rm:public": "rm -rf public && mkdir public && cp -rf src/assets public",
     "lint": "yarn run lint:ts & yarn run lint:scss",
     "fix": "yarn run fix:ts & yarn run fix:scss",
-    "lint:ts": "eslint ./**/*.{js,ts}",
-    "lint:scss": "stylelint ./**/*.{css,scss}",
-    "fix:ts": "eslint ./**/*.{js,ts} --fix",
-    "fix:scss": "stylelint ./**/*.{css,scss} --fix",
+    "lint:ts": "eslint src/**/*.{js,ts}",
+    "lint:scss": "stylelint src/**/*.{css,scss}",
+    "fix:ts": "eslint src/**/*.{js,ts} --fix",
+    "fix:scss": "stylelint src/**/*.{css,scss} --fix",
     "upgrade": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
