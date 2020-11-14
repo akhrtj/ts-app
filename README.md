@@ -1,4 +1,4 @@
-# TypeScript + Parcel 開発用
+# Boilerplate: TypeScript + Parcel
 
 ## Usage
 
