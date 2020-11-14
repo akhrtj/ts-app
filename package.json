@@ -17,7 +17,7 @@
     "lint:scss": "stylelint src/**/*.{css,scss}",
     "fix:ts": "eslint src/**/*.{js,ts} --fix",
     "fix:scss": "stylelint src/**/*.{css,scss} --fix",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "upgrade:latest": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "core-js": "^3.7.0",
