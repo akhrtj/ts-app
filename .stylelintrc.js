@@ -7,6 +7,8 @@ module.exports = {
   ignoreFiles: ['**/node_modules/**', '**/*.js', '**/*.ts'],
   plugin: ['stylelint-scss'],
   rules: {
+    'no-empty-source': null,
+    'block-no-empty': null,
     'at-rule-no-unknown': [
       true,
       {
