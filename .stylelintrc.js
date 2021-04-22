@@ -7,18 +7,10 @@ module.exports = {
   ignoreFiles: ['**/node_modules/**', '**/*.js', '**/*.ts'],
   plugin: ['stylelint-scss'],
   rules: {
-    'at-rule-no-unknown': [
+    'scss/at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: [
-          'content',
-          'each',
-          'for',
-          'function',
-          'if',
-          'include',
-          'mixin',
-        ],
+        ignoreAtRules: ['tailwind'],
       },
     ],
     'no-empty-source': null,
