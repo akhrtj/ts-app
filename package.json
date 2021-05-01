@@ -7,19 +7,23 @@
   },
   "private": true,
   "scripts": {
-    "start": "yarn run rm:dist && parcel src/index.html --dist-dir dist --port 8000",
-    "build": "yarn run rm:public && parcel build src/index.html --dist-dir public --no-source-maps --public-url /ts-app/public",
-    "rm:dist": "rm -rf dist && mkdir dist && cp -rf src/assets dist",
-    "rm:public": "rm -rf public && mkdir public && cp -rf src/assets public",
-    "lint": "yarn run lint:ts & yarn run lint:scss",
-    "fix": "yarn run fix:ts & yarn run fix:scss",
-    "lint:ts": "eslint 'src/**/*.{js,ts}'",
-    "lint:scss": "stylelint 'src/**/*.{css,scss}'",
-    "fix:ts": "eslint 'src/**/*.{js,ts}' --fix",
-    "fix:scss": "stylelint 'src/**/*.{css,scss}' --fix",
+    "rmcache": "rimraf .parcel-cache",
+    "start": "run-s start:*",
+    "start:rm": "rimraf dist",
+    "start:mkdir": "mkdirp dist",
+    "start:cp": "cpx src/assets/** dist/assets",
+    "start:server": "parcel src/index.html --dist-dir dist --port 8000",
+    "build": "run-s build:*",
+    "build:rm": "rimraf public",
+    "build:mkdir": "mkdirp public",
+    "build:cp": "cpx src/assets/** public/assets",
+    "build:build": "parcel build src/index.html --dist-dir public --no-source-maps --public-url /ts-app/public",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "fix": "eslint --ext .js,.jsx,.ts,.tsx . --fix",
     "upgrade:latest": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
+    "@tailwindcss/jit": "^0.1.18",
     "core-js": "^3.7.0",
     "regenerator-runtime": "^0.13.5"
   },
@@ -31,14 +35,20 @@
     "@parcel/validator-typescript": "2.0.0-nightly.645",
     "@types/node": "^14.14.6",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
+    "@typescript-eslint/parser": "^4.22.0",
     "autoprefixer": "^10.2.5",
-    "eslint": "^7.8.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "parcel": "^2.0.0-nightly.643",
+    "cpx": "^1.5.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "parcel": "2.0.0-nightly.643",
     "postcss": "^8.2.10",
     "prettier": "^2.1.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.29.0",
     "stylelint": "^13.7.0",
     "stylelint-config-recess-order": "^2.1.0",
@@ -47,5 +57,32 @@
     "stylelint-scss": "^3.18.0",
     "tailwindcss": "^2.1.1",
     "typescript": "^4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -9,7 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,14 +18,6 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-var-requires': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        arrowParens: 'always',
-        endOfLine: 'auto',
-        singleQuote: true,
-      },
-    ],
   },
   globals: {
     window: true,
