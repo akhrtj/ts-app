@@ -1,4 +1,4 @@
-# Boilerplate: TypeScript + Parcel
+# Boilerplate: TypeScript + tailwindcss + Parcel
 
 ## Usage
 
@@ -11,11 +11,11 @@ $ yarn
 Development: http://localhost:8000/
 
 ```
-$ yarn run start
+$ yarn start
 ```
 
 Build
 
 ```
-$ yarn run build
+$ yarn build
 ```
